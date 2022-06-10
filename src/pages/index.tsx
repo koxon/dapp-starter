@@ -58,7 +58,7 @@ function Main() {
       </div>
 
       <div>
-        <ConnectWallet show="always" />
+        <ConnectWallet />
       </div>
 
       <div className="w-full max-w-xl rounded-xl bg-sky-500/10 p-6 text-center">
