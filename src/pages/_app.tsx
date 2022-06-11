@@ -45,24 +45,25 @@ const gnosisChain: Chain = {
   testnet: false,
 }
 
+// Web3 Configs
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum, gnosisChain],
+  [
+    infuraProvider({ infuraId: process.env.NEXT_PUBLIC_INFURA_ID !== '' && process.env.NEXT_PUBLIC_INFURA_ID }),
+    jsonRpcProvider({
+      rpc: chain => {
+        if (chain.id !== gnosisChain.id) return null
+        return { http: chain.rpcUrls.default }
+      },
+    }),
+    publicProvider(),
+  ]
+)
+const { connectors } = getDefaultWallets({ appName: app.name, chains })
+const wagmiClient = createClient({ autoConnect: true, connectors, provider })
+
 // Web3Wrapper
 export function Web3Wrapper({ children }) {
-  const { chains, provider } = configureChains(
-    [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum, gnosisChain],
-    [
-      infuraProvider({ infuraId: process.env.NEXT_PUBLIC_INFURA_ID !== '' && process.env.NEXT_PUBLIC_INFURA_ID }),
-      jsonRpcProvider({
-        rpc: chain => {
-          if (chain.id !== gnosisChain.id) return null
-          return { http: chain.rpcUrls.default }
-        },
-      }),
-      publicProvider(),
-    ]
-  )
-  const { connectors } = getDefaultWallets({ appName: app.name, chains })
-  const wagmiClient = createClient({ autoConnect: true, connectors, provider })
-
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
 
