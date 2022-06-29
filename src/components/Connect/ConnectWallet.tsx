@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function ConnectWallet({ show = 'always' }: Props) {
-  const { data: account } = useAccount()
-  if ((show === 'connected' && !account?.address) || (show === 'disconnected' && account?.address)) return null
+  const { isConnected } = useAccount()
+  if ((show === 'connected' && !isConnected) || (show === 'disconnected' && isConnected)) return null
   return <ConnectButton />
 }

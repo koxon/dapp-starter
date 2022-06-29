@@ -2,7 +2,7 @@ import styles from 'styles/Home.module.scss'
 import ThemeToggleButton from 'components/Theme/ThemeToggleButton'
 import ThemeToggleList from 'components/Theme/ThemeToggleList'
 import { useState } from 'react'
-import { useNetwork, useAccount, useBalance } from 'wagmi'
+import { useNetwork, useSwitchNetwork, useAccount, useBalance } from 'wagmi'
 import ConnectWallet from 'components/Connect/ConnectWallet'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useSignMessage } from 'wagmi'
@@ -36,10 +36,11 @@ function Header() {
 }
 
 function Main() {
-  const { data: account } = useAccount()
-  const { activeChain, chains, isLoading: isNetworkLoading, pendingChainId, switchNetwork } = useNetwork()
+  const { address, isConnected, connector } = useAccount()
+  const { chain, chains } = useNetwork()
+  const { isLoading: isNetworkLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
   const { data: balance } = useBalance({
-    addressOrName: account?.address,
+    addressOrName: address,
   })
   return (
     <main className={styles.main + ' space-y-6'}>
@@ -65,8 +66,8 @@ function Main() {
         <dl className={styles.dl}>
           <dt>Connector</dt>
           <dd>
-            {account && account?.connector?.name}
-            {!account && (
+            {connector?.name}
+            {!address && (
               <ConnectButton.Custom>
                 {({ openConnectModal }) => (
                   <span onClick={openConnectModal} className="cursor-pointer hover:underline">
@@ -77,17 +78,17 @@ function Main() {
             )}
           </dd>
           <dt>Connected Network</dt>
-          <dd>{activeChain ? `${activeChain?.id}: ${activeChain?.name}` : 'n/a'}</dd>
+          <dd>{chain ? `${chain?.id}: ${chain?.name}` : 'n/a'}</dd>
           <dt>Switch Network</dt>
           <dd className="flex flex-wrap justify-center">
-            {account &&
+            {isConnected &&
               chains.map(x => (
                 <button
-                  disabled={!switchNetwork || x.id === activeChain?.id}
+                  disabled={!switchNetwork || x.id === chain?.id}
                   key={x.id}
                   onClick={() => switchNetwork?.(x.id)}
                   className={
-                    (x.id === activeChain?.id ? 'bg-green-500' : 'bg-blue-500 hover:scale-105') +
+                    (x.id === chain?.id ? 'bg-green-500' : 'bg-blue-500 hover:scale-105') +
                     ' m-1 rounded-lg py-1 px-3 text-white transition-all duration-150'
                   }
                 >
@@ -98,11 +99,11 @@ function Main() {
             <ConnectWallet show="disconnected" />
           </dd>
           <dt>Account</dt>
-          <dd className="break-all">{account ? `${account?.address}` : 'n/a'}</dd>
+          <dd className="break-all">{address ? `${address}` : 'n/a'}</dd>
           <dt>Balance</dt>
-          <dd className="break-all">{balance ? `${balance?.formatted} ${balance?.symbol}` : 'n/a'} </dd>
+          <dd className="break-all">{address ? `${balance?.formatted} ${balance?.symbol}` : 'n/a'} </dd>
           <dt>Sign Message</dt>
-          <dd className="break-all">{account ? <SignMsg /> : 'n/a'} </dd>
+          <dd className="break-all">{address ? <SignMsg /> : 'n/a'} </dd>
         </dl>
       </div>
     </main>
