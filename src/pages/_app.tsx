@@ -5,7 +5,8 @@ import { useRouter } from 'next/router'
 import HeadGlobal from 'components/HeadGlobal'
 // Web3Wrapper deps:
 import { getDefaultWallets, RainbowKitProvider, lightTheme, darkTheme } from '@rainbow-me/rainbowkit'
-import { Chain, chain, createClient, configureChains, WagmiConfig } from 'wagmi'
+import { Chain } from '@rainbow-me/rainbowkit'
+import { chain, createClient, configureChains, WagmiConfig } from 'wagmi'
 import { infuraProvider } from 'wagmi/providers/infura'
 import { publicProvider } from 'wagmi/providers/public'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
@@ -31,6 +32,8 @@ const gnosisChain: Chain = {
   id: 100,
   name: 'Gnosis',
   network: 'gnosis',
+  iconUrl: 'https://gnosis.io/wp-content/themes/lessrain/images/favicon/apple-touch-icon.png',
+  iconBackground: '#000',
   nativeCurrency: {
     decimals: 18,
     name: 'xDai',
