@@ -39,7 +39,7 @@ function Main() {
   const { address, isConnected, connector } = useAccount()
   const { chain, chains } = useNetwork()
   const { isLoading: isNetworkLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
-  const { data: balance } = useBalance({
+  const { data: balance, isLoading: isBalanceLoading } = useBalance({
     addressOrName: address,
   })
   return (
@@ -101,7 +101,9 @@ function Main() {
           <dt>Account</dt>
           <dd className="break-all">{address ? `${address}` : 'n/a'}</dd>
           <dt>Balance</dt>
-          <dd className="break-all">{address ? `${balance?.formatted} ${balance?.symbol}` : 'n/a'} </dd>
+          <dd className="break-all">
+            {isBalanceLoading ? 'loading' : balance ? `${balance?.formatted} ${balance?.symbol}` : 'n/a'}
+          </dd>
           <dt>Sign Message</dt>
           <dd className="break-all">{address ? <SignMsg /> : 'n/a'} </dd>
         </dl>
