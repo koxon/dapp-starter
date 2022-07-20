@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useNetwork, useSwitchNetwork, useAccount, useBalance } from 'wagmi'
 import ConnectWallet from 'components/Connect/ConnectWallet'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { useConnectModal, useAccountModal, useChainModal } from '@rainbow-me/rainbowkit'
 import { useSignMessage } from 'wagmi'
 
 export default function Home() {
@@ -42,6 +43,9 @@ function Main() {
   const { data: balance, isLoading: isBalanceLoading } = useBalance({
     addressOrName: address,
   })
+  const { openConnectModal } = useConnectModal()
+  const { openAccountModal } = useAccountModal()
+  const { openChainModal } = useChainModal()
   return (
     <main className={styles.main + ' space-y-6'}>
       <div className="text-center">
@@ -59,7 +63,45 @@ function Main() {
       </div>
 
       <div>
-        <ConnectWallet />
+        <h4 className="text-center text-sm font-medium">demo: ConnectWalletBtn Full</h4>
+        <div className="flex w-full flex-col items-center">
+          <ConnectWallet />
+        </div>
+      </div>
+
+      <div>
+        <h4 className="text-center text-sm font-medium">demo: useModal (rainbowkit ^0.4.3)</h4>
+        <div className="flex w-full flex-col items-center">
+          {openConnectModal && (
+            <button
+              onClick={openConnectModal}
+              type="button"
+              className="m-1 rounded-lg bg-orange-500 py-1 px-3 text-white transition-all duration-150 hover:scale-105"
+            >
+              useConnectModal
+            </button>
+          )}
+
+          {openAccountModal && (
+            <button
+              onClick={openAccountModal}
+              type="button"
+              className="m-1 rounded-lg bg-orange-500 py-1 px-3 text-white transition-all duration-150 hover:scale-105"
+            >
+              useAccountModal
+            </button>
+          )}
+
+          {openChainModal && (
+            <button
+              onClick={openChainModal}
+              type="button"
+              className="m-1 rounded-lg bg-orange-500 py-1 px-3 text-white transition-all duration-150 hover:scale-105"
+            >
+              useChainModal
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="w-full max-w-xl rounded-xl bg-sky-500/10 p-6 text-center">
