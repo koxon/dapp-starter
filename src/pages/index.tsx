@@ -1,6 +1,5 @@
 import styles from 'styles/Home.module.scss'
-import ThemeToggleButton from 'components/Theme/ThemeToggleButton'
-import ThemeToggleList from 'components/Theme/ThemeToggleList'
+import { ThemeToggleButton, ThemeToggleList } from 'components/Theme'
 import { useState } from 'react'
 import { useNetwork, useSwitchNetwork, useAccount, useBalance } from 'wagmi'
 import ConnectWallet from 'components/Connect/ConnectWallet'
