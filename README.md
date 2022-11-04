@@ -50,6 +50,13 @@ yarn fc
 yarn ff
 ```
 
+**Contract Types**
+
+```bash
+# Generate contract types from src/contracts/*.json
+yarn compile-contract-types
+```
+
 ### Deployment
 
 The easiest way to deploy your Next.js app is to use [Vercel](https://vercel.com/), by the creators of Next.js.

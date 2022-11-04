@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "fc": "npx prettier --check ./src",
-    "ff": "npx prettier --write ./src"
+    "ff": "npx prettier --write ./src",
+    "compile-contract-types": "typechain --target ethers-v5 --out-dir \"src/contracts/types\" \"src/contracts/*.json\"",
+    "postinstall": "yarn compile-contract-types"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
@@ -35,6 +37,8 @@
     "eslint-config-next": "^13.0.2",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.12",
+    "@typechain/ethers-v5": "^10.1.1",
+    "typechain": "^8.1.1",
     "typescript": "^4.8.4"
   }
 }
