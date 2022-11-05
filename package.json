@@ -9,8 +9,7 @@
     "lint": "next lint",
     "fc": "npx prettier --check ./src",
     "ff": "npx prettier --write ./src",
-    "compile-contract-types": "typechain --target ethers-v5 --out-dir \"src/contracts/types\" \"src/contracts/*.json\"",
-    "postinstall": "yarn compile-contract-types"
+    "compile-contract-types": "typechain --target ethers-v5 --out-dir \"src/contracts/types\" \"src/contracts/*.json\""
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
