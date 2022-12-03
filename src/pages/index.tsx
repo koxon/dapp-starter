@@ -40,7 +40,7 @@ function Main() {
   const { chain, chains } = useNetwork()
   const { isLoading: isNetworkLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
   const { data: balance, isLoading: isBalanceLoading } = useBalance({
-    addressOrName: address,
+    address: address,
   })
   const { openConnectModal } = useConnectModal()
   const { openAccountModal } = useAccountModal()
