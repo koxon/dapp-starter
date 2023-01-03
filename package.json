@@ -27,7 +27,7 @@
     "react-dom": "^18.2.0",
     "sass": "^1.57.1",
     "tailwindcss": "^3.2.4",
-    "wagmi": "^0.9.5"
+    "wagmi": "^0.10.4"
   },
   "devDependencies": {
     "@typechain/ethers-v5": "^10.2.0",
