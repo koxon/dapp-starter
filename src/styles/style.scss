@@ -4,3 +4,21 @@
 @import 'base';
 @import 'utils';
 @import '@rainbow-me/rainbowkit/styles.css';
+@import 'css/normalize.css';
+@import 'css/webflow.css';
+@import 'css/fryheads-minting-app.webflow.css';
+
+.attribution-link {
+  opacity: 0.75;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  position: absolute;
+  padding: 4px 0;
+  display: block;
+  bottom: -28px;
+  left: 0;
+  right: 0;
+}

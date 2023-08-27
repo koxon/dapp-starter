@@ -1,12 +1,12 @@
 export const app: { [key: string]: string } = {
-  name: 'dApp Starter', // web app name
-  title: 'dApp Starter Boilerplate', // website title
-  description: 'dApp Starter Boilerplate by https://github.com/arisac', // description of website
-  keywords: 'web3, dapp, ethereum, ethers, wagmi, rainbowkit, nextjs, react, tailwindcss, sass, boilerplate', // keywords for SEO
-  url: 'https://dapp-starter.aris.ac', // website url
-  image: '/icon-512x512.png', // image url for SEO
-  favicon: '/favicon.ico', // favicon url
-  twitter: '@arisdotac', // twitter account
+  name: 'FryHeads', // web app name
+  title: 'The Fry Heads NFTs', // website title
+  description: 'The Fry Heads charitable NFTs', // description of website
+  keywords: 'web3, dapp, ethereum, ethers, NFT, fry heads, charity NFT, charity NFTs, NFT collection', // keywords for SEO
+  url: 'https://fryheads.com', // website url
+  image: '/images/15.png', // image url for SEO
+  favicon: '/images/favicon.png', // favicon url
+  twitter: '@FryHeadsNFT', // twitter account
   themeColor: '#FFFFFF', // theme color
   themeColorDark: '#000000', // theme color dark
 }
