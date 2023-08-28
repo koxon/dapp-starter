@@ -33,9 +33,6 @@ export default function HeadGlobal() {
       <link href="https://fonts.googleapis.com" rel="preconnect" />
       <link href="https://fonts.gstatic.com" rel="preconnect" crossOrigin="anonymous" />
 
-      <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" defer />
-      <script src="/js/main.js" defer />
-
       {/* <script async>WebFont.load({  google: {    families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Inter:300,regular,500,600,800:cyrillic,latin"]  }});</script> */}
       {/* <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
           <script type="text/javascript">WebFont.load({  google: {    families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Inter:300,regular,500,600,800:cyrillic,latin"]  }});</script>
